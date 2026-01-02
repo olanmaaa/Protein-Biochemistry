@@ -18,4 +18,6 @@ View(sift.fold.merge)
 
 #According to the authors: SIFT Score below 0.05 is deleterious and FoldX score greater than 2 kCal/mol is deleterious
 #Task 3: Using the criteria above, Find all mutations that have a SIFT score below 0.05 and FoldX Score above 2 (i.e: Mutations that affect both structure and function)
+deleterious_mutations <- sift.fold.merge[sift.fold.merge$sift_Score < 0.05 & sift.fold.merge$foldX_Score > 2.0,]
 
+nrow(deleterious_mutations) #there are a total of 5261 mutations harming both structure and function
