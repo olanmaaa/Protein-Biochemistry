@@ -21,3 +21,20 @@ View(sift.fold.merge)
 deleterious_mutations <- sift.fold.merge[sift.fold.merge$sift_Score < 0.05 & sift.fold.merge$foldX_Score > 2.0,]
 
 nrow(deleterious_mutations) #there are a total of 5261 mutations harming both structure and function
+
+#Task 4: extracting the original amino acid one-letter code from the Amino Acid column
+orig_aa <- substr(deleterious_mutations$Amino_Acid.x,1,1)
+#(optional) Adding the Original Amino Acid to the data frame
+deleterious_mutations <- deleterious_mutations$orig_aa
+
+#Task 5: creating a frequency table for the original amino acids
+aa_count <- table(deleterious_mutations$orig_aa)
+#(optional) determining the highest occuring amino acid
+highest_aa <- names(aa_count)[which.max(aa_count)]
+
+#Task 6: create a barplot and pie chart to represent the frequency distribution of the amino acids
+barplot(aa_count, 
+        main='Distribution of Amino Acid Occurence',
+        xlab='Amino Acids(denoted by one-letter code)',
+        ylab='Frequency of Occurence',
+        col='darkblue')
