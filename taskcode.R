@@ -11,3 +11,11 @@ summary (fold_data)
 #Task 1: creating new columns in each data set named "specific_Protein_aa' that is a concantenation of the Protein and Amino Acid columns
 sift_data$specific_Protein_aa <- paste(sift_data$Protein,sift_data$Amino_Acid, sep='_')
 fold_data$specific_Protein_aa <- paste(fold_data$Protein,fold_data$Amino_Acid, sep='_')
+
+#Task 2:merging both data frames by specific_Protein_aa
+sift.fold.merge <- merge(sift_data,fold_data, by = 'specific_Protein_aa')
+View(sift.fold.merge)
+
+#According to the authors: SIFT Score below 0.05 is deleterious and FoldX score greater than 2 kCal/mol is deleterious
+#Task 3: Using the criteria above, Find all mutations that have a SIFT score below 0.05 and FoldX Score above 2 (i.e: Mutations that affect both structure and function)
+
